@@ -1,0 +1,271 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>KPR Chess School Club</title>
+  <meta name="description" content="Official website of the KPR Chess School Club — meetings, events, live ratings, and contact info." />
+  <meta name="theme-color" content="#111827" />
+  <link rel="icon" href="favicon.ico" />
+  <style>
+    :root{
+      --bg:#0b1020; --bg2:#0e1428; --card:#121a33; --muted:#9aa3b2;
+      --text:#e8edf7; --accent:#67e8f9; --accent2:#a78bfa; --ok:#34d399; --warn:#fbbf24;
+      --border:rgba(255,255,255,.08); --shadow: 0 10px 30px rgba(0,0,0,.35);
+      --radius: 16px; --radius-lg: 22px;
+    }
+    *{box-sizing:border-box}
+    html,body{margin:0;background:linear-gradient(160deg,var(--bg),var(--bg2));color:var(--text);font-family:system-ui,-apple-system,Segoe UI,Roboto,Ubuntu,Helvetica,Arial,sans-serif;line-height:1.5}
+    a{color:var(--accent)}
+    header{position:sticky;top:0;z-index:50;background:rgba(11,16,32,.7);backdrop-filter:saturate(160%) blur(10px);border-bottom:1px solid var(--border)}
+    .wrap{max-width:1100px;margin:0 auto;padding:0 20px}
+    nav{display:flex;align-items:center;justify-content:space-between;height:64px}
+    .brand{display:flex;gap:10px;align-items:center;font-weight:800;letter-spacing:.4px}
+    .brand .logo{width:34px;height:34px;border-radius:10px;display:grid;place-items:center;background:radial-gradient(120% 120% at 30% 20%,var(--accent2),var(--accent));box-shadow:0 6px 22px rgba(103,232,249,.35)}
+    .navlinks a{margin-left:18px;text-decoration:none;color:var(--text);opacity:.85}
+    .navlinks a:hover{opacity:1}
+    .btn{display:inline-block;padding:10px 16px;border-radius:999px;font-weight:600;text-decoration:none;border:1px solid var(--border);background:linear-gradient(180deg,rgba(255,255,255,.06),rgba(255,255,255,.02));box-shadow:var(--shadow)}
+    .btn.accent{background:linear-gradient(90deg,var(--accent2),var(--accent));color:#07101e;border:none}
+    .hero{padding:80px 0 40px}
+    .hero-grid{display:grid;grid-template-columns:1.2fr .8fr;gap:32px;align-items:center}
+    .hero h1{font-size:clamp(28px,4vw,44px);line-height:1.1;margin:0 0 12px}
+    .tag{display:inline-flex;gap:8px;align-items:center;font-size:13px;color:var(--muted);border:1px solid var(--border);padding:6px 10px;border-radius:999px}
+    .card{background:linear-gradient(180deg,rgba(255,255,255,.05),rgba(255,255,255,.02));border:1px solid var(--border);border-radius:var(--radius);box-shadow:var(--shadow)}
+    .hero .card{padding:18px}
+    .board{
+      --s:46px; width:calc(var(--s)*8); height:calc(var(--s)*8); display:grid; grid-template-columns:repeat(8,1fr);
+      border-radius:var(--radius-lg); overflow:hidden; box-shadow:var(--shadow); border:1px solid var(--border)
+    }
+    .sq:nth-child(odd){background:#222a45}
+    .sq:nth-child(even){background:#0f1630}
+    .sq.hl{background:linear-gradient(180deg,rgba(103,232,249,.18),rgba(103,232,249,.05))}
+    section{padding:52px 0}
+    h2{font-size:clamp(22px,3vw,30px);margin:0 0 16px}
+    .grid{display:grid;gap:18px}
+    .grid.cards{grid-template-columns:repeat(auto-fit,minmax(230px,1fr))}
+    .section-card{padding:18px}
+    .muted{color:var(--muted)}
+    table{width:100%;border-collapse:collapse}
+    th,td{padding:10px 12px;border-bottom:1px solid var(--border);text-align:left}
+    th{font-size:14px;color:#cbd5e1}
+    tbody tr:hover{background:rgba(255,255,255,.03)}
+    .chip{font-size:12px;padding:4px 10px;border-radius:999px;border:1px solid var(--border);color:#cbd5e1}
+    .ok{color:var(--ok)}
+    .warn{color:var(--warn)}
+    .kpis{display:grid;grid-template-columns:repeat(auto-fit,minmax(180px,1fr));gap:14px}
+    .kpi{padding:16px}
+    .kpi h3{margin:0;font-size:13px;color:#cbd5e1}
+    .kpi p{margin:6px 0 0;font-size:22px;font-weight:700}
+    .gallery{display:grid;grid-template-columns:repeat(auto-fit,minmax(180px,1fr));gap:10px}
+    .gallery img{width:100%;aspect-ratio:1/1;object-fit:cover;border-radius:14px;border:1px solid var(--border)}
+    footer{padding:26px 0;color:#9aa3b2;border-top:1px solid var(--border)}
+    @media (max-width:860px){ .hero-grid{grid-template-columns:1fr} .board{--s:40px; margin-top:8px} }
+    @media (max-width:520px){ .navlinks{display:none} .board{--s:36px} }
+  </style>
+</head>
+<body>
+  <header>
+    <div class="wrap">
+      <nav>
+        <div class="brand">
+          <div class="logo">♟</div>
+          <div>KPR Chess School Club</div>
+        </div>
+        <div class="navlinks">
+          <a href="#about">About</a>
+          <a href="#schedule">Schedule</a>
+          <a href="#ratings">Live Ratings</a>
+          <a href="#events">Events</a>
+          <a href="#contact" class="btn">Contact</a>
+        </div>
+      </nav>
+    </div>
+  </header>
+
+  <main class="wrap">
+    <!-- HERO -->
+    <section class="hero">
+      <div class="hero-grid">
+        <div>
+          <span class="tag">♟ School Club • Est. 2025</span>
+          <h1>Think ahead. Play fair. <br/>Grow stronger with every move.</h1>
+          <p class="muted">Welcome to the KPR Chess School Club. Join weekly training, friendly matches, and rated tournaments. Beginners to advanced—everyone’s invited.</p>
+          <div style="display:flex;gap:10px;margin-top:14px">
+            <a href="#schedule" class="btn accent">View Schedule</a>
+            <a href="#join" class="btn">Join the Club</a>
+          </div>
+        </div>
+        <div class="card">
+          <!-- Decorative chessboard -->
+          <div class="board" aria-hidden="true" title="Decorative chessboard">
+            <!-- 64 squares -->
+            <script>
+              // Build 64 squares quickly
+              document.addEventListener('DOMContentLoaded', () => {
+                const board = document.querySelector('.board');
+                const frag = document.createDocumentFragment();
+                for(let i=0;i<64;i++){
+                  const d = document.createElement('div');
+                  d.className = 'sq' + ((i%16===9 || i%16===14) ? ' hl': '');
+                  frag.appendChild(d);
+                }
+                board.appendChild(frag);
+              });
+            </script>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ABOUT -->
+    <section id="about">
+      <h2>About the Club</h2>
+      <div class="grid cards">
+        <article class="card section-card">
+          <h3>Our Mission</h3>
+          <p class="muted">To build thinking skills, sportsmanship, and confidence through chess. We host lessons, puzzles, and tournaments for all levels.</p>
+        </article>
+        <article class="card section-card">
+          <h3>Coaches</h3>
+          <p class="muted"><strong>Coach Priya</strong> (National Elo 1850), <strong>Coach Arjun</strong> (FIDE 1960). Parent volunteers help with events and travel.</p>
+        </article>
+        <article class="card section-card">
+          <h3>Where & When</h3>
+          <p class="muted">Room A-204 • Fridays 4:00–6:00 PM. Weekend meets before tournaments.</p>
+        </article>
+      </div>
+    </section>
+
+    <!-- SCHEDULE / KPIs -->
+    <section id="schedule">
+      <h2>This Month</h2>
+      <div class="kpis">
+        <div class="card kpi"><h3>Members</h3><p id="kpi-members">—</p></div>
+        <div class="card kpi"><h3>Games Played</h3><p id="kpi-games">—</p></div>
+        <div class="card kpi"><h3>Avg Rating</h3><p id="kpi-avg">—</p></div>
+        <div class="card kpi"><h3>Next Event</h3><p id="kpi-next">Friday Blitz (Oct 10)</p></div>
+      </div>
+    </section>
+
+    <!-- LIVE RATINGS -->
+    <section id="ratings">
+      <h2>Live Ratings</h2>
+      <p class="muted">These update as results are entered. You can replace the sample data or connect to a real API later.</p>
+      <div class="card section-card">
+        <div style="display:flex;gap:10px;align-items:center;justify-content:space-between;flex-wrap:wrap;margin-bottom:8px">
+          <div class="chip">System: Elo</div>
+          <div>
+            <button class="btn" onclick="sortRatings('rating')">Sort by Rating</button>
+            <button class="btn" onclick="sortRatings('name')">Sort by Name</button>
+          </div>
+        </div>
+        <table id="ratingsTable" aria-describedby="ratings">
+          <thead><tr><th>#</th><th>Name</th><th>Rating</th><th>Form</th><th>Last Played</th></tr></thead>
+          <tbody><!-- rows injected by JS --></tbody>
+        </table>
+      </div>
+    </section>
+
+    <!-- EVENTS -->
+    <section id="events">
+      <h2>Upcoming Events</h2>
+      <div class="grid cards">
+        <article class="card section-card">
+          <h3>Friday Blitz</h3>
+          <p class="muted">5+0 arena • 90 minutes • Starts 4:30 PM</p>
+          <p><span class="ok">Open</span> • Room A-204</p>
+        </article>
+        <article class="card section-card">
+          <h3>Rapid Ladder</h3>
+          <p class="muted">15+10 rated • Sundays 10:00 AM</p>
+          <p><span class="ok">Open</span> • Library Hall</p>
+        </article>
+        <article class="card section-card">
+          <h3>Parents vs Students</h3>
+          <p class="muted">Fun matches • Next month</p>
+          <p><span class="warn">TBA</span></p>
+        </article>
+      </div>
+    </section>
+
+    <!-- GALLERY -->
+    <section id="gallery">
+      <h2>Gallery</h2>
+      <div class="gallery">
+        <!-- Replace these with your own images -->
+        <img src="https://images.unsplash.com/photo-1542641728-6ca359b085f4?q=80&w=800&auto=format&fit=crop" alt="Chess board closeup">
+        <img src="https://images.unsplash.com/photo-1529694157871-‘’?q=80&w=800&auto=format&fit=crop" alt="Players concentrating" onerror="this.style.display='none'">
+        <img src="https://images.unsplash.com/photo-1518182170549-6e0a1b87bdee?q=80&w=800&auto=format&fit=crop" alt="Knight piece">
+        <img src="https://images.unsplash.com/photo-1529692236671-f1b64e9e6cf3?q=80&w=800&auto=format&fit=crop" alt="Students playing chess">
+      </div>
+      <p class="muted" style="margin-top:6px">Tip: replace image URLs with files you upload to your repo (e.g., <code>/images/club1.jpg</code>).</p>
+    </section>
+
+    <!-- JOIN / CONTACT -->
+    <section id="join">
+      <h2>Join the Club</h2>
+      <div class="card section-card">
+        <p>Interested in joining or volunteering? Email us or visit during a meeting.</p>
+        <p>
+          <strong>Email:</strong> <a href="mailto:chessclub@example.edu">chessclub@example.edu</a> &nbsp;|&nbsp;
+          <strong>Instagram:</strong> <a href="#" aria-label="Instagram link">@kprchess</a>
+        </p>
+        <p class="muted">For admins: you can protect your results-entry page later with Basic Auth or a simple login.</p>
+      </div>
+    </section>
+  </main>
+
+  <footer>
+    <div class="wrap">
+      © <span id="year"></span> KPR Chess School Club • Built with ♟
+    </div>
+  </footer>
+
+  <script>
+    // ======== SAMPLE DATA (replace with your own or fetch from an API) ========
+    const players = [
+      { name: "Anaya R.", rating: 1360, form: "W W D L W", last: "2025-09-01" },
+      { name: "Ritvik S.", rating: 1215, form: "L W W W W", last: "2025-08-30" },
+      { name: "Mehul T.", rating: 1102, form: "W L D W L", last: "2025-08-29" },
+      { name: "Priya K.", rating: 980,  form: "W W L L W", last: "2025-08-28" },
+      { name: "Zoya M.",  rating: 890,  form: "W D L W W", last: "2025-08-27" },
+    ];
+
+    function renderRatings(list){
+      const tb = document.querySelector('#ratingsTable tbody');
+      tb.innerHTML = '';
+      list.forEach((p,i)=>{
+        const tr = document.createElement('tr');
+        tr.innerHTML = `
+          <td>${i+1}</td>
+          <td>${p.name}</td>
+          <td><strong>${p.rating}</strong></td>
+          <td>${p.form}</td>
+          <td><time datetime="${p.last}">${new Date(p.last).toLocaleDateString()}</time></td>
+        `;
+        tb.appendChild(tr);
+      });
+      // Update KPIs
+      const avg = Math.round(list.reduce((a,b)=>a+b.rating,0)/list.length);
+      document.getElementById('kpi-members').textContent = list.length;
+      document.getElementById('kpi-games').textContent = 124; // replace with real number later
+      document.getElementById('kpi-avg').textContent = avg;
+    }
+
+    function sortRatings(by){
+      const copy = [...players];
+      if(by==='rating') copy.sort((a,b)=>b.rating-a.rating);
+      if(by==='name') copy.sort((a,b)=>a.name.localeCompare(b.name));
+      renderRatings(copy);
+    }
+
+    // Example: plug into a real API later
+    // fetch('/api/ratings').then(r=>r.json()).then(data => renderRatings(data));
+
+    document.addEventListener('DOMContentLoaded', ()=>{
+      document.getElementById('year').textContent = new Date().getFullYear();
+      sortRatings('rating'); // initial render
+    });
+  </script>
+</body>
+</html>
